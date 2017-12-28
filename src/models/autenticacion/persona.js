@@ -159,9 +159,7 @@ module.exports = (sequelize, DataType) => {
     classMethods: {
       // Creando asociaciones para la entidad
       associate: (models) => {
-        persona.hasMany(models.usuario, {as: 'usuarios', foreignKey: {name: 'fid_persona', allowNull: true}});
-        persona.belongsToMany(models.apm, { as:'asociado',through: models.asociado });
-        persona.belongsToMany(models.apm, { as:'representante',through: models.representante_legal });
+        //persona.hasMany(models.usuario, {as: 'usuarios', foreignKey: {name: 'fid_persona', allowNull: true}});
       },
     },
     tableName: 'persona',
