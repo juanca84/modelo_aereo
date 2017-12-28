@@ -14,6 +14,13 @@ module.exports = app => {
         .catch(error => Util.mensajeError(res, error.message));
     });
 
+  app.route('/api/v1/municipios/cantidad')
+    .get((req, res) => {
+      dpaBL.cantidadMunicipios(models.dpa, req.body)
+        .then(respuesta => Util.mensajeExito(res, "La obtención de datos se realizó correctamente.", 200, respuesta))
+        .catch(error => Util.mensajeError(res, error.message));
+    });
+
   app.route('/api/v1/provincia')
     .get((req, res) => {
       dpaBL.listarProvincias(models.dpa, req.body)
@@ -28,7 +35,7 @@ module.exports = app => {
         .catch(error => Util.mensajeError(res, error.message));
     });
 
-  // Buscar 
+  // Buscar
   app.route('/api/v1/dpa/:id')
     .get((req, res) => {
       dpaBL.buscarDpa(models.dpa, req.params.id)

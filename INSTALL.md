@@ -20,6 +20,20 @@ Para crear la base de datos, ejecutar el siguiente comando dentro de la línea d
 ```sh
 postgres=# CREATE DATABASE backend_db WITH OWNER agetic;
 ```
+
+## Instalación de nodejs
+
+Para instalar nodejs se necesita nvm, por favor seguir las instrucciones del siguiente link https://github.com/creationix/nvm para instalar nvm.
+
+Una vez que tengamos instalado nvm, hacemos correr las siguientes instrucciones para instalar la versión correcta:
+```sh
+nvm install 8.9.0
+```
+Selccionamos como default la version instalada con la siguiente instrucción:
+
+```sh
+nvm alias default 8.9.0
+```
 ## Instalación
 
 Para instalar el proyecto:

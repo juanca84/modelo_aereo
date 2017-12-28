@@ -19,6 +19,15 @@ module.exports = app => {
     return deferred.promise;
   };
 
+  //Listar
+  const cantidadMunicipios = (model, body) => {
+    const deferred = Q.defer();
+    model.count({ where: {'nivel_dpa': 3 }})
+      .then(respuesta => deferred.resolve(respuesta))
+      .catch(error => deferred.reject(error));
+    return deferred.promise;
+  };
+
   const listarProvincias = (model, body) => {
     const deferred = Q.defer();
     var parametros = {};
@@ -163,6 +172,7 @@ module.exports = app => {
   };
 
   const municipioBL = {
+    cantidadMunicipios,
     listarMunicipios,
     listarProvincias,
     listarDepartamentos,
@@ -178,4 +188,3 @@ module.exports = app => {
 
   return municipioBL;
 };
-
