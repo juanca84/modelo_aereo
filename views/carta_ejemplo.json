@@ -1,0 +1,23 @@
+{
+  "ciudad": "La Paz",
+  "ref": "PRESENTACIÓN DE PROYECTO DE LEY %",
+  "refParam": "APL-12154",
+  "contenido": "Mediante la presente me dirijo a su autoridad con el objetivo de prosentar ante su despacho el Proyecto de Ley %, para su debido tratamiento constitucional.",
+  "contenidoParam": "Modificación de la ley de sustancias controladas con el objetivo de regular la comercialización de acetona",
+  "destinatario": {
+    "nombre": "José Alberto Gonzales",
+    "cargo": "PRESIDENTE DE LA CÁMARA DE SENADORES"
+  },
+  "remitentes": [
+    {
+      "nombre": "Maria Perez Aguirre",
+      "cargo": "Cargo de la persona 1",
+      "partido": "Partido 1"
+    },
+    {
+      "nombre": "Lucia Martinez Quispe",
+      "cargo": "Cargo de la persona 2",
+      "partido": "Partido 2"
+    }
+  ]
+}

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html" charset="utf-8" http-equiv="Content-Type">
+    <style type="text/css">
+      body {
+      font-family: "Liberation Sans";
+      }
+      #encabezado {
+      text-align: center;
+      color: #245c95;
+      }
+      p, table {
+      font-size: 10px;
+      }
+      .contenido {
+      margin: 0 auto;
+      }
+      .seccion {
+      background-color: #245c95;
+      text-align: center;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      }
+      h4 {
+      color: white;
+      }
+      .seccion-caeb {
+      background-color: #575757;
+      text-align: center;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      }
+      .dato {
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+      padding-left: 15px;
+      padding-right: 12px;
+      margin-left: 20px;
+      }
+      .dato-moneda {
+      border-bottom: 1px solid #ddd;
+      text-align: right;
+      padding-left: 15px;
+      padding-right: 12px;
+      margin-left: 20px;
+      }
+      .dato-centro {
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+      padding-left: 15px;
+      padding-right: 12px;
+      margin-left: 20px;
+      }
+      .nombre-dato {
+      background-color: #eceeef;
+      padding-left: 15px;
+      padding-right: 12px;
+      }
+      .nombre_razon {
+      border-style: solid;
+      }
+      .altura-td {
+      height: 18px;
+      }
+      .espacio {
+      padding-left: 5px;
+      }
+      .titulo-tabla {
+      background-color: #eceeef;
+      height: 28px;
+      }
+      .altura-td-productos {
+      height: 28px;
+      }
+      @media all {
+      div.saltopagina{
+      display: none;
+      }
+      }
+      @media print{
+      div.saltopagina{
+      display:block;
+      page-break-before:always;
+      }
+      .oculto {display:none}
+      }
+      .mapa {
+      text-align: center;
+      padding: 20px 0 20px 0;
+      }
+      .contenido-declaracion {
+      padding: 20px 20px 20px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="contenido">
+      <div id="encabezado">
+        <h3>DECLARACIÓN JURADA PARA EL REGISTRO <br> Y ACREDITACIÓN NACIONAL DE MARCA PAÍS</h3>
+      </div>
+      <p> El presente formulario se constituye una Declaración Jurada y es de exclusiva responsabilidad de la Unidad Solicitante que la presenta.<br> El Ministerio Ministerio de Comunicación podrá verificar en cualquier momento la información y documentación presentada.</p>
+      <h4 class="seccion">I. IDENTIFICACIÓN DE LA UNIDAD SOLICITANTE</h4>
+      <div class="contenido-seccion">
+        <table width=660 style="margin-top:-12px;">
+          <tr>
+            <td width="215"></td>
+            <td class="nombre-dato" width="40">Código Entidad:<span class="espacio"></span></td>
+            <td class="dato-centro altura-td" width="120">{{adicionar_ceros nro_certificado}}</td>
+            <td width="125"></td>
+          </tr>
+        </table>
+        <table width="660">
+          <tr>
+            <td class="nombre-dato" width="200">1. Nombre o Razón Social:<span class="espacio"></span></td>
+            <td class="dato altura-td" colspan="3" width="460">{{nombreRs}}</td>
+          </tr>
+          <tr>
+            <td class="nombre-dato" width="200">2. Tipo de Societario u Organización Productiva:<span class="espacio"></span></td>
+            <td class="dato altura-td" colspan="3" width="460">{{tipoSocOrg}}</td>
+          </tr>
+          <tr>
+            <td class="nombre-dato" width="200">3. Matrícula de Comercio:<span class="espacio"></span></td>
+            <td class="dato altura-td" width="100">{{matricula}}</td>
+            <td class="nombre-dato" width="70">4. NIT:<span class="espacio"></span></td>
+            <td class="dato altura-td" width="190">{{nit}}</td>
+          </tr>
+          <tr>
+            <td class="nombre-dato" width="200">5. ¿Tipo de Organización a la que se encuentra afiliada?:<span class="espacio"></span></td>
+            <td class="dato altura-td" colspan="3" width="460">{{tipoOrgAfiliada}}</td>
+          </tr>
+          <tr>
+            <td class="nombre-dato" width="200">6. Correo Electrónico:<span class="espacio"></span></td>
+            <td class="dato altura-td" width="100">{{correo_electronico}}</td>
+            <td class="nombre-dato" width="70">7. Sitio Web:<span class="espacio"></span></td>
+            <td class="dato altura-td" width="170">{{sitio_web}}</td>
+          </tr>
+          <!-- <tr> -->
+          <!--   <td class="nombre-dato" width="200">8. Domicilio Fiscal:<span class="espacio"></span></td> -->
+          <!--   <td class="dato altura-td" colspan="3" width="460">{{domicilio_fiscal}}</td> -->
+          <!-- </tr> -->
+        </table>
+      </div>
+      <h4 class="seccion">II. DATOS DEL PROPIETARIO Ó REPRESENTANTE LEGAL</h4>
+      <div class="contenido-seccion">
+        <table width="660">
+          <tr>
+            <td class="nombre-dato" width="185">1. Nombre Completo del Propietario o Representante Legal: <span class="espacio"></span></td>
+            <td class="dato altura-td" colspan="3" width="405">{{nombreCompletoRpte}}</td>
+          </tr>
+          <tr>
+            <td class="nombre-dato" width="185">2. Género: <span class="espacio"></span></td>
+            <td class="dato altura-td" width="60">{{generoRpte}}</td>
+            <td class="nombre-dato" width="60">3. Documento Identidad: <span class="espacio"></span></td>
+            <td class="dato altura-td" width="190">{{ciRpte}}</td>
+          </tr>
+          <tr>
+            <td class="nombre-dato" width="185">4. Teléfono ó Celular: <span class="espacio"></span></td>
+            <td class="dato altura-td" width="60">{{telefonoRpte}}</td>
+            <td class="nombre-dato" width="60">5. Correo Electrónico: <span class="espacio"></span></td>
+            <td class="dato altura-td" width="190">{{correoRpte}}</td>
+          </tr>
+          <tr>
+            <td class="nombre-dato" width="185">6. Domicilio: <span class="espacio"></span></td>
+            <td class="dato altura-td" colspan="3" width="405">{{direcionRpte}}</td>
+          </tr>
+        </table>
+      </div>
+      <h4 class="seccion">(i) III. UBICACIÓN DE LA UNIDAD PRODUCTIVA</h4>
+      <div class="contenido-seccion">
+        <table width="660">
+          {{#each ubicaciones}}
+          <tr>
+            <td width="120" class="nombre-dato">1. Departamento: <span class="espacio"></span></td>
+            <td width="100" class="dato altura-td">{{this.departamento.descripcion}}</td>
+            <td width="100" class="nombre-dato">2. Provincia: <span class="espacio"></span></td>
+            <td width="100" class="dato altura-td">{{this.provincia.nombre}}</td>
+            <td width="100" class="nombre-dato">3. Municipio: <span class="espacio"></span></td>
+            <td width="100" class="dato altura-td">{{this.municipio.nombre}}</td>
+          </tr>
+          <tr>
+            <td width="100" class="nombre-dato">4. Dirección: <span class="espacio"></span></td>
+            <td width="300" colspan="5" class="dato altura-td">{{this.direccion}}</td>
+          </tr>
+          <tr>
+            <td width="120" class="nombre-dato">5. Teléfono/Celular: <span class="espacio"></span></td>
+            <td width="100" class="dato altura-td">{{ telefono_reemplazar this.telefonos }}</td>
+            <td width="100" colspan="2" class="nombre-dato">6. Territorio Indígena Originario: <span class="espacio"></span></td>
+            <td width="220" colspan="2" class="dato altura-td">{{this.par_territorio_indigena.nombre}}</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          {{/each}}
+        </table>
+        <p><i>(i) Se refiere al lugar donde funciona la Unidad Productiva.</i></p>
+      </div>
+      <h4 class="seccion">IV. ACTIVIDAD ECONÓMICA</h4>
+      <div class="contenido-seccion">
+        <table width="660">
+          <tr>
+            <td class="nombre-dato" width="130">1. Actividad Principal: <span class="espacio"></span></td>
+            {{#if actividad_principal.parametro_caeb}}
+            <td width="300" colspan="5" class="dato altura-td">{{actividad_principal.parametro_caeb.padre.padre.descripcion}}</td>
+            {{else}}
+            <td width="300" colspan="5" class="dato altura-td">{{actividad_principal.descripcion_actividad}}</td>
+            {{/if}}
+          </tr>
+        </table>
+        <br>
+      </div>
+      <h4 class="seccion">V. DECLARACIÓN </h4>
+      <div class="contenido-seccion">
+        <table width="660">
+          <tr>
+            <td>{{declaracion}}</td>
+          </tr>
+        </table>
+      </div>
+      
+      <div class="saltopagina">
+        <h4 class="seccion"> VII. CROQUIS UBICACIÓN </h4>
+        <div class="contenido-seccion">
+          {{#each croquis as |value key|}}
+          {{#unless this.imagen}}
+          <p style="font-size:11px;text-align:center;">El usuario no ha registrado latitud y longitud de la ubicación número {{sum @index}}.</p>
+          {{/unless}}
+          {{#if this.imagen}}
+          {{#if_diferente key 0}}
+          <div class="saltopagina">
+            {{/if_diferente}}
+            <table>
+              <tr>
+                <td width="120" class="nombre-dato">Departamento: <span class="espacio"></span></td>
+                <td width="100" class="dato altura-td">{{this.departamento}}</td>
+                <td width="100" class="nombre-dato">Provincia: <span class="espacio"></span></td>
+                <td width="100" class="dato altura-td">{{this.provincia}}</td>
+                <td width="100" class="nombre-dato">Municipio: <span class="espacio"></span></td>
+                <td width="100" class="dato altura-td">{{this.municipio}}</td>
+              </tr>
+            </table>
+            <div class="mapa">
+              <img src="data:image;base64,{{this.imagen}}" height="600" width="600"/>
+            </div>
+            <table>
+              <tr>
+                <td width="100" class="nombre-dato">Dirección: <span class="espacio"></span></td>
+                <td width="300" colspan="5" class="dato altura-td">{{this.direccion}}</td>
+              </tr>
+              <tr>
+                <td width="120" class="nombre-dato">Teléfono/Celular: <span class="espacio"></span></td>
+                <td width="100" class="dato altura-td">{{ telefono_reemplazar this.telefonos }}</td>
+                <td width="100" colspan="2" class="nombre-dato">Territorio Indígena Originario: <span class="espacio"></span></td>
+                <td width="220" colspan="3" class="dato altura-td">{{this.par_territorio_indigena.nombre}}</td>
+              </tr>
+            </table>
+            {{/if}}
+            {{#if_diferente key 0}}
+          </div>
+          {{/if_diferente}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

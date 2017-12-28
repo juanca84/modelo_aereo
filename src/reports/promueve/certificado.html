@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Certificado</title>
+  <style>
+    
+    body,
+    html {
+      width: 100%;
+      height: 100%;
+      margin: 0px;
+    }
+
+    body,
+    span,
+    strong {
+      font-size: 11px;
+      font-family: Liberation Sans;
+    }
+
+    .padd_contenido {
+      padding-top: 150px;
+      padding-left: 70px;
+      padding-right: 70px;
+      padding-bottom: 12px;
+    }
+    .plomo {
+        background-color: rgba(200,200,200,0.3);
+        padding: 2px 10px;
+    }
+    .estilo-tabla-1 {
+      font-style: italic;
+      padding: 20px 5px;
+      font-size: 7px;
+    }
+    .centrear {
+      text-align: center;
+    }
+    
+  </style>
+</head>
+
+  <body>
+
+      <body>
+          <div class="padd_contenido">
+            <div>
+                <div style="height: 80px;"></div>
+                <div>
+                    <table style="margin: 0px; padding: 0px; width:100%">
+                        <tr><td class="plomo centrear" colspan="3" padding: 10px;><strong>REGISTRO UNICO DE MINEROS</strong></td></tr>
+                        <tr><td></td></tr>
+                        <tr><td class="plomo">NIT: </td><td colspan="2"> <%= nit %></td></tr>
+                        <tr><td class="plomo">RUM: </td> <td colspan="2"> <%= rum %></td></tr>
+                        <tr><td class="plomo">RAZON SOCIAL: </td> <td colspan="2"><%= razon_social %> </td></tr>
+                        <% if (numero == 261) { %>
+                        <tr><td class="plomo">MATRICULA DE COMERCIO: </td> <td colspan="2"><%= matricula %> </td></tr>
+                        <% } %>
+                        <% if (numero == 275) { %>
+                        <tr><td class="plomo">NUMERO DE AFCOOP: </td> <td colspan="2"><%= nro_afcoop %> </td></tr>
+                        <tr><td class="plomo">FECHA DE AFCOOP: </td> <td colspan="2"><%= fecha_afcoop %> </td></tr>
+                        <% } %>
+                        <% if (rol == 4) { %>
+                        <tr><td class="plomo">NUMERO DE RUEX: </td> <td colspan="2"><%= ruex %> </td></tr>
+                        <% } %>
+                        <tr><td class="plomo">REPRESENTANTE: </td> <td colspan="2"> <%= representante %></td></tr>
+                        <tr><td class="plomo">DOCUMENTO DE IDENTIDAD: </td> <td colspan="2"> <%=documento_identidad %> </td></tr>
+                        <tr><td class="plomo">TELEFONO: </td><td colspan="2"> <%=telefono %> </td></tr>
+                        <tr><td class="plomo">DIRECCION: </td> <td colspan="2"> <%=direccion %> </td></tr>
+
+                    </table>
+
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <div>
+                    <center>
+                    <table>
+                        <tr><td class="plomo">La Paz, <%=fecha %></td><td></td></tr>
+                    </table>
+                    </center>
+                </div>
+
+            </div>
+          </div>
+      </body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html" charset="utf-8" http-equiv="Content-Type">
+  <style type="text/css">
+  body {
+    background-image: url("data:image;base64,{{fondo_unidad_productiva}}");
+    background-size: 980px 780px;
+    background-repeat: no-repeat;
+    font-size: 10pt;
+    font-family: "Liberation Sans";
+  }
+  .position-datos {
+    margin-top: 200pt;
+    position: absolute;
+    margin-left: 160pt;
+  }
+  .tamanho-columna-derecha {
+    width: 400pt;
+  }
+  .tamanho-columna-izquierda {
+    width: 150pt;
+  }
+  .alinear-derecha {
+    text-align: right;
+  }
+  .alinear-izquierda {
+    text-align: left;
+  }
+  .espacio {
+    padding-left: 5mm;
+  }
+  .espacio-ayuda {
+    padding-top: 200pt;
+  }
+  .posicion-qr {
+    position: absolute;
+    margin-top: 400pt;
+    float: right;
+    margin-left: 650pt;
+  }
+  .left-panel
+  {
+    /*border-style: solid;*/
+    position: absolute;
+    width:1000px;
+    height:746px;
+  }
+  .right-panel
+  {
+    /*border-style: solid;;*/
+    position: absolute;
+    width:174px;
+    height:746px;
+    font-size: 8px;
+    margin-left: 1020px;
+  }
+  .vertical-text {
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+    transform: rotate(90deg);
+  }
+  .tabla-vertical1 {
+    position: absolute;
+    margin-top: 124px;
+    margin-left: -40px;
+  }
+  .tabla-vertical2 {
+    position: absolute;
+    margin-top: 540px;
+    margin-left: -40px;
+  }
+  .interlineado {
+    line-height: 1;
+  }
+  .posicion-numero {
+    position: absolute;
+    margin-top: 425pt;
+    margin-left: 120px;
+  }
+  .espacio-izquierda {
+    padding-right: 3mm;
+  }
+
+  </style>
+</head>
+<!-- <body background="unidades_productivas.png"> -->
+<body>
+  <div class="left-panel">
+    <div class="position-datos">
+      <table>
+        <tr>
+          <td class="tamanho-columna-izquierda alinear-derecha espacio-izquierda">NOMBR2E O RAZÓN SOCIAL: </td>
+          <td class="tamanho-columna-derecha alinear-izquierda"><b>{{mayuscula razon_social}} </b></td>
+        </tr>
+        <tr>
+          <td class="tamanho-columna-izquierda alinear-derecha espacio-izquierda">REPRESENTANTE LEGAL:</td>
+          <td class="tamanho-columna-derecha alinear-izquierda">{{mayuscula representante}}</td>
+        </tr>
+        <tr>
+          <td class="tamanho-columna-izquierda alinear-derecha espacio-izquierda">CATEGORIA:</td>
+          <td class="tamanho-columna-derecha alinear-izquierda"><b>{{mayuscula categoria}}</b></td>
+        </tr>
+        <tr>
+          <td class="tamanho-columna-izquierda alinear-derecha espacio-izquierda">RUBRO PRINCIPAL:</td>
+          <td class="tamanho-columna-derecha alinear-izquierda"><b>{{mayuscula rubro_principal}}</b></td>
+        </tr>
+        <tr>
+          <td class="tamanho-columna-izquierda alinear-derecha espacio-izquierda">ACTIVIDAD PRINCIPAL:</td>
+          <td class="tamanho-columna-derecha alinear-izquierda">{{mayuscula actividad_principal}}</td>
+        </tr>
+        {{#if rubro_secundario}}
+        <tr>
+          <td class="tamanho-columna-izquierda alinear-derecha espacio-izquierda">RUBRO SECUNDARIO:</td>
+          <td class="tamanho-columna-derecha alinear-izquierda"><b>{{mayuscula rubro_secundario}}</b></td>
+        </tr>
+        {{/if}}
+        {{#if rubro_secundario}}
+        <tr>
+          <td class="tamanho-columna-izquierda alinear-derecha espacio-izquierda">ACTIVIDAD SECUNDARIA:</td>
+          <td class="tamanho-columna-derecha alinear-izquierda">{{mayuscula actividad_secundaria}}</td>
+        </tr>
+        {{/if}}
+        <tr>
+          <td class="tamanho-columna-izquierda alinear-derecha espacio-izquierda">N° NIT / CI:</td>
+          <td class="tamanho-columna-derecha alinear-izquierda">{{nit_ci}}</td>
+        </tr>
+        <tr>
+          <td class="tamanho-columna-izquierda alinear-derecha espacio-izquierda">DEPARTAMENTO:</td>
+          <td class="tamanho-columna-derecha alinear-izquierda">{{mayuscula departamento}}</td>
+        </tr>
+        <tr>
+          <td class="tamanho-columna-izquierda alinear-derecha espacio-izquierda">MUNICIPIO:</td>
+          <td class="tamanho-columna-derecha alinear-izquierda">{{mayuscula municipio}}</td>
+        </tr>
+        <tr>
+          <td class="tamanho-columna-izquierda alinear-derecha espacio-izquierda">DOMICILIO:</td>
+          <td class="tamanho-columna-derecha alinear-izquierda">{{mayuscula direccion}}</td>
+        </tr>
+        <tr>
+          <td class="tamanho-columna-izquierda alinear-derecha espacio-izquierda">FECHA DE EMISIÓN:</td>
+          <td class="tamanho-columna-derecha alinear-izquierda">{{fecha_emision}}</td>
+        </tr>
+        <tr>
+          <td class="tamanho-columna-izquierda alinear-derecha espacio-izquierda">VIGENCIA:</td>
+          <td class="tamanho-columna-derecha alinear-izquierda">{{fecha_vigencia}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="posicion-numero">
+      <table width="200">
+        <tr>
+          <td style="font-size:20pt; font-weight:bold;">Nro. {{adicionar_ceros nro_certificacion}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="posicion-qr">
+      <img src="data:image;base64,{{qr}}"/>
+    </div>
+  </div>
+  <div class="right-panel">
+    <table class="vertical-text tabla-vertical1" width="280">
+      <tr class="interlineado">
+        <td width="78"><b>CATEGORIA:</b></td>
+        <td width="202" >{{mayuscula categoria}}</td>
+      </tr>
+      <tr class="interlineado">
+        <td width="78"><b>RUBRO PRINCIPAL:</b></td>
+        <td width="202" >{{mayuscula rubro_principal}}</td>
+      </tr>
+      {{#if rubro_secundario}}
+      <tr class="interlineado">
+        <td width="78"><b>RUBRO SECUNDARIO:</b></td>
+        <td width="202" >{{mayuscula rubro_secundario}}</td>
+      </tr>
+      {{/if}}
+      <tr class="interlineado">
+        <td width="78"><b>N° NIT:<b></td>
+        <td width="202" >{{nit_ci}}</td>
+      </tr>
+      <tr class="interlineado">
+        <td width="78"><b>DEPARTAMENTO:</b></td>
+        <td width="202" >{{mayuscula departamento}}</td>
+      </tr>
+      <tr class="interlineado">
+        <td width="78"><b>MUNICIPIO:</b></td>
+        <td width="202" >{{mayuscula municipio}}</td>
+      </tr>
+      <tr class="interlineado">
+        <td width="78"><b>DIRECCIÓN:</b></td>
+        <td width="202">{{mayuscula direccion}}</td>
+      </tr>
+    </table>
+    <table class="vertical-text tabla-vertical2" width="280">
+      <tr class="interlineado">
+        <td width="78"><b>Nro:</b></td>
+        <td width="202">{{adicionar_ceros nro_certificacion}}</td>
+      </tr>
+      <tr class="interlineado">
+        <td width="78"><b>NOMBRE O RAZÓN SOCIAL:</b></td>
+        <td width="202">{{mayuscula razon_social}}</td>
+      </tr>
+      <tr class="interlineado">
+        <td width="78"><b>REPRESENTANTE LEGAL:<b></td>
+        <td width="202">{{mayuscula representante}}</td>
+      </tr>
+      <tr class="interlineado">
+        <td width="78"><b>EMISION:</b></td>
+        <td width="202">{{fecha_emision}}</td>
+      </tr>
+      <tr class="interlineado">
+        <td width="78"><b>VIGENCIA:</b></td>
+        <td width="202">{{fecha_vigencia}}</td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

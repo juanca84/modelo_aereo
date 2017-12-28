@@ -1,0 +1,32 @@
+html
+    head
+        title= titulo
+        style= estilo
+    body
+      br
+      div(class="mdl-grid")
+        div.leyp(style="padding: 0 40px;")
+          h3 ASAMBLEA LEGISLATIVA PLURINACIONAL
+          hr
+          br
+          br
+          div(style="text-align:center")
+            h5 ACTA DE CONFORMIDAD
+          br
+          div(style="text-align:center")
+            h5= titulo
+          br
+          br
+          br
+          br
+          p= "Mediante el presente documento, los firmantes declaran conocer el contenido del Informe de Comisión adjunto al Proyecto de Ley " + titulo_proyecto + " y manifiestan su conformidad con el contenido del mismo."
+          br
+          p= "Las claves de datos del Informe de Comisión, son: "
+          ul(style="font-size:0.8em;")
+            li= "MD5: " + hashMd5
+            li= "SHA2: " + sha2
+          br
+          br
+          br
+          br
+          p(style="text-align:center")=fecha

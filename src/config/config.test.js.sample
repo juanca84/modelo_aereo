@@ -1,0 +1,29 @@
+console.log("configuracion de test activada");
+
+module.exports = {
+  database: "probolivia_db_test",
+  username: "postgres",
+  password: "rvallejos",
+  timezone: 'America/La_Paz',
+  params: {
+    dialect: "postgres",
+    port: 5432,
+    host: "127.0.0.1",
+    sync: {force:true},
+    define: {
+      underscored: true,
+      freezeTableName: true,
+    },
+  },
+  sistema:{
+    tiempo_token: 240
+  },
+  //configuracion con jwt poner una palabra secreta segura
+  puerto: 8003,
+  jwtSecret: "AGETIC-2017",
+  jwtSession: { session: false },
+  urlNotificaciones: "http://192.168.20.113:8001",
+  timeoutConexionNotificaciones: 5000, // Milisegundos
+  pathNotificacionCorreo: "/api/v1/correos",
+  tokenCorreo:"tokenAccesoApiCorreo",
+};

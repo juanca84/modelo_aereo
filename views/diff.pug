@@ -1,0 +1,53 @@
+html
+  head
+    title= titulo
+    style= estilo
+  body
+    div(class="diff")
+      div(class="mdl-grid")
+        div(class="mdl-cell mdl-cell--2-col")
+        div(class="mdl-cell mdl-cell--8-col")
+          h2(align="center")= titulo.toUpperCase()
+          each unaDiff, index in diff
+            //p= (index + 1) + " " +  unaDiff.kind
+            if unaDiff.kind == 'E'
+              // es una diferencia
+              - var nombreKey = unaDiff.path.pop();
+              - var unPath = unaDiff.path.join('.');
+              - var objDesdePath = unPath.split('.').reduce(function(o, k) { return o && o[k]; }, version2);
+              //p= nombreKey
+              if nombreKey == 'contenido'
+                hr
+                h3 Cambio de contenido
+                h4= objDesdePath.tipo_contenido.toUpperCase() + " " +  objDesdePath.orden + ".- "
+                  if(objDesdePath.descripcion)
+                    = "(" + objDesdePath.descripcion + ")"
+
+                p!= textDiff.prettyHtml(textDiff.main(unaDiff.lhs, unaDiff.rhs))
+              else if nombreKey == 'descripcion'
+                hr
+                h3 Cambio de título
+                h4= objDesdePath.tipo_contenido.toUpperCase() + " " +  objDesdePath.orden + ".- "
+                  if(objDesdePath.descripcion)
+                    != "(" + textDiff.prettyHtml(textDiff.main(unaDiff.lhs, unaDiff.rhs)) + ")"
+
+            else if unaDiff.kind == 'A'
+              if unaDiff.item.rhs
+                hr
+                h3(style="color: #4CAF50") #{unaDiff.item.rhs.tipo_contenido} adicionado
+
+                h4= unaDiff.item.rhs.tipo_contenido.toUpperCase() + " " +  unaDiff.item.rhs.orden + ".- "
+                  if(unaDiff.item.rhs.descripcion)
+                    = "(" + unaDiff.item.rhs.descripcion + ")"
+
+                p!= unaDiff.item.rhs.contenido
+
+              if unaDiff.item.lhs
+                hr
+                h3(style="color: #F44336") #{unaDiff.item.lhs.tipo_contenido} eliminado
+
+                h4= unaDiff.item.lhs.tipo_contenido.toUpperCase() + " " + unaDiff.item.lhs.orden + ".- "
+                  if(unaDiff.item.lhs.descripcion)
+                    = "(" + unaDiff.item.lhs.descripcion + ")"
+
+                p!= unaDiff.item.lhs.contenido

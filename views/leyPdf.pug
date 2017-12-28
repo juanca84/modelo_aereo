@@ -1,0 +1,112 @@
+html
+  head
+    title= ''
+    style= estilo
+  body
+    - function romanize(num) {if (!+num) return false; var digits = String(+num).split(""), key =["","C","CC","CCC","CD","D","DC","DCC","DCCC","CM","","X","XX","XXX","XL","L","LX","LXX","LXXX","XC","","I","II","III","IV","V","VI","VII","VIII","IX"],roman = "",i = 3; while (i--) roman = (key[+digits.pop() + (i * 10)] || "") + roman; return Array(+digits.join("") + 1).join("M") + roman;}
+    - function literal(num, ext) { if (!ext) { ext = "A"; } if (!+num) { return false; } var dig = num % 10; var dec = Math.floor(num / 10); var diccionariodig = ["", "PRIMER" + ext, "SEGUND" + ext, "TERCER" + ext, "CUART" + ext, "QUINT" + ext, "SEXT" + ext, "SEPTIM" + ext, "OCTAV" + ext, "NOVEN" + ext]; var diccionariodec = ["", "DECIM" + ext, "VIGESIM" + ext, "TRIGESIM" + ext, "CUADRAGESIM" + ext, "QUINCUAGESIM" + ext, "SEXAGESIM" + ext, "SEPTUAGESIM" + ext, "OCTOGESIM" + ext, "NONAGESIM" + ext]; return "" + diccionariodec[dec] + " " + diccionariodig[dig]; }
+    - function removeAttrs(retVal) { retVal = retVal.replace(/ng-bind-html=\"[a-zA-Z0-9:;\.\s\(\)\-\,]*\"/gi,''); retVal = retVal.replace(/data-ce-placeholder=\"[a-zA-Z0-9:;\.\s\(\)\-\,]*\"/gi,''); retVal = retVal.replace(/data-ce-placeholder=\"Escriba aquí el contenido del artículo\"/gi, ""); retVal = retVal.replace(/contenteditable=\"\"/gi, ""); retVal = retVal.replace(/&nbsp;/g, " "); return retVal; }
+    - function cambiarTipoOL(value) {    value = value.replace(/class=\"upper-roman\"/g, "class='upper-roman'");    value = value.replace(/class=\"lower-roman\"/g, "type='i'");    value = value.replace(/class=\"upper-alpha\"/g, "type='A'");    value = value.replace(/class=\"lower-alpha\"/g, "class='lower-alpha'");    return value;}
+    - var contadorArticulos = 0
+    - function articulosArbol(objeto) {    if (objeto.items.length > 0) {        for (var i = 0; i < objeto.items.length; i++) {            articulosArbol(objeto.items[i]);        }    } else {        contadorArticulos++;        return;    }}
+    if !oficial
+      <div style="position: absolute; left: 5%; top: 15%; font-size: 72px; color: LightGray; -webkit-transform: rotate(-45deg); z-index: -1;">
+          <span> BORRADOR </span>
+      </div>
+    div.leyp
+      - var libros = contenido.cuerpoLey;
+      - var disposiciones = contenido.disposiciones;
+      div(class="mdl-grid")
+        div(class="mdl-cell mdl-cell--12-col")
+          h1= titulo.toUpperCase()
+
+          - var contadorGralArticulos = 0
+          each libro in libros
+            - contadorArticulos = 0
+            - articulosArbol(libro)
+            - contadorGralArticulos = contadorGralArticulos + contadorArticulos
+
+          - var primerArticuloUnico =  contadorGralArticulos === 1
+
+          each libro in libros
+            if estructura.includes(1)
+              h1= libro.tipo_contenido.toUpperCase() + " " +  literal(libro.orden, "O")
+              h1.desc= libro.descripcion.toUpperCase()
+            each titulo in libro.items
+              if estructura.includes(2)
+                if libro.items.length > 1
+                  h1= titulo.tipo_contenido.toUpperCase() + " " + romanize(titulo.orden)
+                else
+                  h1= titulo.tipo_contenido.toUpperCase() + " ÚNICO "
+                h1.desc= titulo.descripcion.toUpperCase()
+              each capitulo in titulo.items
+                if estructura.includes(3)
+                  if titulo.items.length > 1
+                    h2= capitulo.tipo_contenido.toUpperCase() + " " + romanize(capitulo.orden)
+                  else
+                    h2= capitulo.tipo_contenido.toUpperCase() + " ÚNICO "
+                  h2.desc= capitulo.descripcion.toUpperCase()
+                each seccion in capitulo.items
+                  if estructura.includes(4)
+                    if capitulo.items.length > 1
+                      h3= seccion.tipo_contenido.toUpperCase() + " " + romanize(seccion.orden)
+                    else
+                      h3= seccion.tipo_contenido.toUpperCase() + " ÚNICA"
+                    h3.desc= seccion.descripcion.toUpperCase()
+                  each articulo in seccion.items
+                    if estructura.includes(5)
+                      if primerArticuloUnico
+                        h4= articulo.tipo_contenido.toUpperCase() + " ÚNICO" + ".- "
+                          if(articulo.descripcion)
+                            = "(" + articulo.descripcion.toUpperCase() + ")"
+                      else
+                        h4= articulo.tipo_contenido.toUpperCase() + " " + articulo.orden + ".- "
+                          if(articulo.descripcion)
+                            = "(" + articulo.descripcion.toUpperCase() + ")"
+                      p!= cambiarTipoOL(removeAttrs(articulo.contenido))
+
+          - var finalesOk = estructura.includes(6)
+          - var adicionalesOk = estructura.includes(8)
+          - var transitoriasOk = estructura.includes(10)
+          - var abrogatoriasOk = estructura.includes(12)
+          - var derogatoriasOk = estructura.includes(14)
+          - var abrogatoriasDerogatoriasOk = estructura.includes(16)
+          - var anexosOk = estructura.includes(18)
+
+          if adicionalesOk || transitoriasOk || abrogatoriasOk || derogatoriasOk ||  abrogatoriasDerogatoriasOk || finalesOk
+            div(style="page-break-after:always;")
+            br
+            h3 DISPOSICIONES
+            if finalesOk
+              h4= disposiciones.finales.tipo_contenido.toUpperCase()
+              each val in disposiciones.finales.items
+                h4= literal(val.orden)
+                p!= cambiarTipoOL(removeAttrs(val.contenido))
+            if adicionalesOk
+              h4= disposiciones.adicionales.tipo_contenido.toUpperCase()
+              each val in disposiciones.adicionales.items
+                h4= literal(val.orden)
+                p!= cambiarTipoOL(removeAttrs(val.contenido))
+            if transitoriasOk
+              h4= disposiciones.transitorias.tipo_contenido.toUpperCase()
+              each val in disposiciones.transitorias.items
+                h4= literal(val.orden)
+                p!= cambiarTipoOL(removeAttrs(val.contenido))
+            if abrogatoriasOk
+              h4= disposiciones.abrogatorias.tipo_contenido.toUpperCase()
+              each val in disposiciones.abrogatorias.items
+                h4= literal(val.orden)
+                p!= cambiarTipoOL(removeAttrs(val.contenido))
+            if derogatoriasOk
+              h4= disposiciones.derogatorias.tipo_contenido.toUpperCase()
+              each val in disposiciones.derogatorias.items
+                h4= literal(val.orden)
+                p!= cambiarTipoOL(removeAttrs(val.contenido))
+            if abrogatoriasDerogatoriasOk
+              h4= disposiciones.abrogatoriasDerogatorias.tipo_contenido.toUpperCase()
+              each val in disposiciones.abrogatoriasDerogatorias.items
+                h4= literal(val.orden)
+                p!= cambiarTipoOL(removeAttrs(val.contenido))
+            //if anexosOk
+              //h3 ANEXOS
+              //p= val.contenido

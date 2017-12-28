@@ -1,0 +1,38 @@
+html
+    head
+        title= titulo
+        style= estilo
+    body
+        div(class="carta")
+            div(class="mdl-grid")
+                div(class="mdl-cell mdl-cell--12-col")
+                    h2.fecha= carta.ciudad + ", " + fecha
+                    h2.destinatarioRazon Señor:
+                    h2.destinatario= carta.destinatario.nombre
+                    h2.destinatarioCargo= carta.destinatario.cargo
+                    h2.destinatarioPre Presente.-
+                    h1 REF. !{carta.ref.toUpperCase()}
+                    p !{carta.contenido}
+                    p !{carta.contenido2}
+                    p Sin otro particular, me despido con las consideraciones más distinguidas.
+                    p Atentamente,
+                if carta.remitentes.length == 1
+                    div(class="mdl-grid")
+                    each remitente in carta.remitentes
+                        div(class="mdl-cell mdl-cell--12-col")
+                            div.firmaNombre= remitente.nombre
+                            div.firmaCargo= remitente.cargo
+                            div.firmaPartido= remitente.partido
+                else if carta.remitentes.length == 2
+                    div(class="mdl-grid")
+                    each remitente in carta.remitentes
+                        div(class="mdl-cell--stretch mdl-cell--6-col")
+                            div.firmaNombre= remitente.nombre
+                            div.firmaCargo= remitente.cargo
+                            div.firmaPartido= remitente.partido
+                else if carta.remitentes.length >= 3
+                    each remitente, index in carta.remitentes
+                        div(class="mdl-cell--stretch mdl-cell--4-col")
+                            div.firmaNombre= remitente.nombre
+                            div.firmaCargo= remitente.cargo
+                            div.firmaPartido= remitente.partido
