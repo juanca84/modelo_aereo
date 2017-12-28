@@ -27,7 +27,7 @@ module.exports = function (sequelize, DataTypes) {
         associate: (models) => {
           models.dpa.belongsTo(models.dpa, {as: 'dpa_superior', foreignKey: {name:'fid_dpa_superior', targetKey: 'id_dpa', allowNull: true}});
           models.dpa.hasMany(models.dpa, {as: 'subdpa', foreignKey: {name:'fid_dpa_superior', allowNull: true}});
-          // models.dpa.hasMany(models.ubicacion, { as: 'ubicaciones', foreignKey: { name: 'fid_dpa', allowNull: false } });
+          models.dpa.hasMany(models.persona, { as: 'persona', foreignKey: { name: 'fid_dpa', allowNull: false } });
           // models.dpa.belongsToMany(models.mineral, { through: models.mineral_dpa });
           // models.dpa.belongsToMany(models.apm, { as: 'dpa', through: models.dpa_apm });
         },

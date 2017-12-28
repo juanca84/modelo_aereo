@@ -7,6 +7,7 @@
  */
 
 const Q = require('q');
+const moment = require('moment');
 
 module.exports = (sequelize, DataType) => {
   const persona = sequelize.define('persona', {
@@ -40,6 +41,9 @@ module.exports = (sequelize, DataType) => {
       xlabel: 'Fecha de nacimiento',
       unique: 'uniqueSelectedItem',
       allowNull: true,
+      get: function() {
+        return moment.utc(this.getDataValue('fecha_nacimiento')).format('DD/MM/YYYY');
+      }
     },
     nombres: {
       type: DataType.STRING(100),
@@ -159,6 +163,7 @@ module.exports = (sequelize, DataType) => {
     classMethods: {
       // Creando asociaciones para la entidad
       associate: (models) => {
+        models.persona.belongsTo(models.dpa, { as: 'dpa', foreignKey: { name:'fid_dpa', allowNull: true } });
         //persona.hasMany(models.usuario, {as: 'usuarios', foreignKey: {name: 'fid_persona', allowNull: true}});
       },
     },
