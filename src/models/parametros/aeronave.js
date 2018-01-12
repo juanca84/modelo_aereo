@@ -6,6 +6,10 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
       autoIncrement: true,
     },
+    tipo: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     matricula: {
       type: DataTypes.STRING,
       allowNull: true,

@@ -31,8 +31,7 @@ module.exports = function (sequelize, DataTypes) {
       paranoid: true,
       freezeTableName: true,
       classMethods: {
-        associate: (models) => {
-          models.itinerario.belongsTo(models.ruta, {as: 'ruta', foreignKey: {name:'fid_ruta', allowNull: true}});
+        associate: (models) => {          
           //models.itinerario.belongsTo(models.aeropuerto, {as: 'aeropuerto', foreignKey: {name:'fid_aeropuerto', allowNull: true}});
           //models.itinerario.hasMany(models.persona, { as: 'persona', foreignKey: { name: 'fid_itinerario', allowNull: false } });
           // models.itinerario.belongsToMany(models.mineral, { through: models.mineral_itinerario });
